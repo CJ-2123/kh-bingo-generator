@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>KH Bingo Generator</title>
+<link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+<h1>KH Bingo Generator</h1>
+
+<div id="controls">
+  <div class="control-row">
+    <select class="dropdown" id="gameSelect">
+      <option value="" disabled selected hidden>Select a game</option>
+    </select>
+    <select class="dropdown" id="listSelect" disabled>
+      <option value="" disabled selected hidden>Select a list</option>
+    </select>
+    <input type="file" id="jsonUpload" accept=".json">
+  </div>
+
+  <div class="control-row">
+    <div id="tagFilters" class="tag-filters"></div>
+  </div>
+
+  <div class="control-row">
+    <select class="dropdown" id="modeSelect">
+      <option value="rush" selected>Rush</option>
+      <option value="exploration">Fog of War</option>
+      <option value="traditional">Bingo</option>
+    </select>
+  </div>
+
+  <div class="control-row" id="modeOptions">
+
+    <!-- Rush -->
+     <div id="rushOptions">
+        <label>
+        Max Rounds:
+          <input id="rushRoundLimit" type="number" min="1" placeholder="Unlimited">
+        </label>
+     </div>
+    
+    <!-- Traditional -->
+    <div id="traditionalOptions" class="mode-options">
+      <label>
+        Board Size:
+        <select class="dropdown" id="boardSize">
+          <option value="3">3 × 3</option>
+          <option value="4">4 × 4</option>
+          <option value="5" selected>5 × 5</option>
+          <option value="6">6 × 6</option>
+          <option value="7">7 × 7</option>
+          <option value="8">8 × 8</option>
+          <option value="9">9 × 9</option>
+        </select>
+      </label>
+    </div>
+
+    <!-- Fog of War -->
+    <div id="explorationOptions" class="mode-options">
+      <label>
+        Board Size:
+        <select class="dropdown" id="exploreSize">
+          <option value="3">3 × 3</option>
+          <option value="5" selected>5 × 5</option>
+          <option value="7">7 × 7</option>
+          <option value="9">9 × 9</option>
+        </select>
+      </label>
+
+      <label>
+        Starting Squares:
+        <select class="dropdown" id="exploreStart">
+          <option value="classic-2">Classic-2</option>
+          <option value="classic-4">Classic-4</option>
+          <option value="center">Center</option>
+          <option value="corners">Corners</option>
+          <option value="ascend" selected>Ascend</option>
+          <option value="river">River</option>
+          <!-- <option value="random">Random</option> -->
+        </select>
+      </label>
+    </div>
+  </div>
+
+  <div class="control-row">
+    <label class="custom-checkbox">
+      <span class="label-text">Shiny Goals:</span>
+       <input type="checkbox" id="shinyCheckbox">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="control-row" id="shinyInput">
+    <label>
+      Shiny Count:
+        <input id="shinyCount" type="number" min="1" placeholder="Default">
+    </label>
+  </div>
+
+  <div class="control-row">
+    <input id="seedInput" placeholder="Seed (optional)">
+    <!-- <button id="copySeedButton">Copy Seed</button> -->
+    <button id="copyShareLink" onclick="copyShareLink()">Copy Game Link</button>
+    <button id="mainButton">Generate Game</button>
+  </div>
+</div>
+
+<div class="control-row">
+  <label>
+    Color:
+    <select id="colorPicker" class="dropdown">
+      <option value="green">Green</option>
+      <option value="teal">Teal</option>
+      <option value="red">Red</option>
+      <option value="blue">Blue</option>
+      <option value="gold">Gold</option>
+      <option value="orange">Orange</option>
+    </select>
+  </label>
+</div>
+<br>
+
+<div id="game-summary" class="hidden"></div>
+
+<div id="status"></div>
+<div id="listPreview" style="display:none;"></div>
+
+<details id="infoContainer">
+  <summary class="info-toggle"> Info</summary>
+
+  <div id="info">
+    <br>
+    Last updated: January 5th, 2026
+    <br><br>
+    <b>Controls:</b>
+    <br>
+    - Left click completes a goal. Right click "marks" it
+    <br>
+    - Scroll wheel up and down cycles through default, marked, and complete
+    <br>
+    - (Rush Mode Only) Hotkeys: 1, 2, 3
+    <br>
+    - Color dropdown selects your marking color. It will automatically update if changed mid-game.
+    <br><br>
+
+    <b>Shiny Goals</b>
+    <br>
+    - If enabled, will set random squares to "Shiny", putting a special border around goals. 
+    <br><br>
+
+    <b>Share Game Link</b>
+    <br>
+    - After clicking "Generate Game", a "Share Game Link" button will appear. It copies the game link to your clipboard to share the seed and settings. 
+    <br><br>
+
+    Rush and Shiny Goals based on modes by DotoPotato:
+    <a href="https://beta.lockout.live">Lockout.Live</a>
+    <br><br>
+
+  </div>
+</details>
+
+<div id="board"></div>
+
+<div id="score"></div>
+
+<div id="progressContainer">
+  <div id="progressBar"></div>
+</div>
+
+<details id="log">
+  <summary class="info-toggle"> Log</summary>
+  <br>
+  <ul id="completedList"></ul>
+</details>
+
+<div id="tooltip"></div>
+
+<script src="js/gameLists.js"></script>
+<script src="js/state.js"></script>
+<script src="js/rng.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/boardRender.js"></script>
+<script src="js/gameModes.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>

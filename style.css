@@ -1,0 +1,516 @@
+@font-face {
+  font-family: 'KHMenu';
+  src: local('KHMenu'), url('../fonts/KHMenu.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'ComicHearts';
+  src: local('ComicHearts'), url('../fonts/ComicHearts.otf') format('truetype');
+}
+
+body, button, input, select, textarea {
+  font-family: 'KHMenu';
+}
+
+body {
+  /* font-family: Arial, sans-serif; */
+  background: #222;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+
+  overflow: hidden;
+  overflow-y: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.body::-webkit-scrollbar {
+  display: none;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+a:link {
+  color: rgb(0, 165, 0);
+}
+
+a:hover {
+  color: rgb(0, 216, 0);
+}
+
+#controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.control-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+input {
+  padding: 8px;
+  font-size: 16px;
+  width: 160px;
+  margin-right: 8px;
+}
+
+button {
+  padding: 10px 16px;
+  margin: 0 4px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: black;
+  color: white;
+  box-shadow: inset 0 2px 0 gray;
+}
+
+button:hover {
+  background: white;
+  color: black;
+  box-shadow: inset 0 4px 0 white;
+}
+
+#mainButton {
+  background: black;
+  color: white;
+  box-shadow: inset 0 2px 0 gray;
+}
+
+#mainButton:hover {
+  background: white;
+  color: black;
+  box-shadow: inset 0 4px 0 white;
+}
+
+#copySeedButton {
+  display: none;
+}
+
+#copyShareLink {
+  display: none;
+}
+
+#shinyInput {
+  display: none;
+}
+
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 170px;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+
+.custom-checkbox input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.slider {
+  width: 44px;
+  height: 22px;
+  background-color: #444;
+  border-radius: 20px;
+  position: relative;
+  transition: 0.3s;
+  border: 1px solid #666;
+  flex-shrink: 0;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 14px;
+  width: 14px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.custom-checkbox input:checked + .slider {
+  background-color: #00178f;
+  border-color: #63c6f5;
+}
+
+.custom-checkbox input:checked + .slider::before {
+  transform: translateX(20px);
+}
+
+.custom-checkbox:hover .slider {
+  border-color: #fff;
+}
+
+.tag-filters .label-text {
+  white-space: nowrap;
+}
+
+.tag-checkbox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  width: fit-content;
+}
+
+.tag-checkbox .label-text {
+  line-height: 1;
+}
+
+.control-row #tagFilters {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px 22px;
+  justify-content: center;
+  max-width: 540px;
+}
+
+#board {
+  display: none;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 8px;
+  margin-bottom: 25px;
+}
+
+.objective {
+  width: 80px;
+  height: 80px;
+  background: #222;
+  border: 2px solid #555;
+  border-radius: 10px;
+  padding: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.15s, background 0.15s;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  font-size: 12px;
+}
+
+.objective img {
+  /* width: 60px;
+  height: 60px; */
+  object-fit: contain;
+  margin-bottom: 5px;
+
+  width: 90%;
+  height: 90%;
+}
+
+.objective .label {
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.objective:hover {
+  background: #333;
+  transform: scale(1.05);
+}
+
+.objective.completed {
+  background: var(--mark-fill);
+  /* border-color: var(--mark-border); */
+  color: white;
+}
+
+.objective.completed:not(.shiny) {
+  border-color: var(--mark-border);
+}
+
+.objective.border-mark {
+  /* border: 5px solid; */
+  /* border-color: var(--mark-border); */
+  box-shadow: inset 0 0 0 4px var(--mark-border);
+  background: #222;
+}
+
+.objective.bingo-line:not(.shiny) {
+  background: linear-gradient(135deg, #7b3fe4, #9b59b6);
+  border-color: #8e44ad;
+  color: white;
+}
+
+.objective.bingo-line.shiny {
+  background: linear-gradient(135deg, #7b3fe4, #9b59b6);
+  color: white;
+}
+
+.objective.shiny {
+  position: relative;
+}
+
+.objective.shiny::before {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  background: linear-gradient(
+    45deg,
+    red,
+    orange,
+    yellow,
+    lime,
+    cyan,
+    deepskyblue,
+    violet,
+    red
+  );
+  filter: blur(2px);
+  opacity: 0.6;
+  z-index: -1;
+  border-radius: 10px;
+}
+
+#game-summary {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+#status {
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+#log {
+  display: none;
+  width: 640px;
+  max-width: 90%;
+  background: #1a1a1a;
+  border: 2px solid #444;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+#log h2 {
+  margin-top: 0;
+  font-size: 20px;
+}
+
+#completedList {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+#completedList li {
+  padding: 6px 0;
+  border-bottom: 1px solid #333;
+  font-size: 15px;
+}
+
+.round {
+margin-bottom: 12px;
+}
+
+.round-title {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.chosen {
+  color: var(--mark-fill);
+}
+
+.not-chosen {
+  color: #888;
+  text-decoration: line-through;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Dropdown styling */
+.dropdown {
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  /* border: 2px solid #555;
+  background-color: #222; */
+  border: 2px solid #555;
+  background-color: black;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 8px;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.dropdown:hover {
+  border-color: #3498db;
+}
+
+.dropdown:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 6px #3498db55;
+}
+
+/* Optional: style the dropdown arrow for a custom look */
+.dropdown::-ms-expand {
+  display: none; /* for IE */
+}
+
+.dropdown option {
+  background-color: #222;
+  color: #fff;
+  padding: 6px;
+}
+
+#progressContainer {
+  display: none;
+  width: 500px;
+  max-width: 90%;
+  height: 20px;
+  background-color: #222;
+  border: 2px solid #555;
+  border-radius: 10px;
+  margin: 15px 0;
+}
+
+#progressBar {
+  height: 100%;
+  width: 0%;
+  background-color: var(--mark-fill);
+  border-radius: 8px;
+  transition: width 0.3s ease;
+}
+
+.mode-options {
+  display: none;
+  margin-top: 10px;
+}
+
+#info.collapsed {
+  display: none;
+}
+
+#infoContainer {
+  width: 640px;
+  max-width: 90%;
+  margin-bottom: 20px;
+}
+
+#info {
+  font-family: 'ComicHearts';
+}
+
+.info-toggle {
+  cursor: pointer;
+  font-size: 16px;
+  color: #aaa;
+  list-style: none;
+}
+
+.info-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.info-toggle::before {
+  content: "▶ ";
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+details[open] .info-toggle::before {
+  transform: rotate(90deg);
+}
+
+#tooltip {
+  position: absolute;
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  z-index: 9999;
+  border: 1px solid white;
+  pointer-events: none;
+  transition: opacity 0.1s ease-in-out;
+  opacity: 0;
+}
+
+#tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent white transparent;
+}
+
+#listPreview {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #bbb;
+}
+
+#score {
+  margin-bottom: 50px;
+}
+
+/* ===== Marking Color Themes ===== */
+:root {
+  --mark-border: #27ae60;
+  --mark-fill: #2ecc71;
+}
+
+/* Green (default) */
+.theme-green {
+  --mark-border: #27ae60;
+  --mark-fill: #2ecc71;
+}
+
+/* Teal */
+.theme-teal {
+  --mark-border: #16a085;
+  --mark-fill: #1abc9c;
+}
+
+/* Red */
+.theme-red {
+  --mark-border: #c0392b;
+  --mark-fill: #e74c3c;
+}
+
+/* Blue */
+.theme-blue {
+  --mark-border: #2980b9;
+  --mark-fill: #3498db;
+}
+
+/* Gold */
+.theme-gold {
+  --mark-border: #b7950b;
+  --mark-fill: #f1c40f;
+}
+
+/* Orange */
+.theme-orange {
+  --mark-border: #d35400;
+  --mark-fill: #e67e22;
+}

@@ -1,0 +1,26 @@
+let allObjectives = [];
+let remainingObjectives = [];
+let currentRound = [];
+let completedObjectives = [];
+let gameGenerated = false;
+let gameStarted = false;
+let rng = Math.random;
+let seedValue = null;
+
+let bingoBoard = [];
+let bingoMarks = [];
+let bingoSize = 5;
+let bingoCompleted = false;
+let bingoLines = [];
+
+let explorationBoard = [];
+let visibleMap = [];
+let boardSize = 5;
+
+let selectedMode = "rush";
+const rushLimit = document.getElementById("rushOptions");
+const traditionalOptions = document.getElementById("traditionalOptions");
+const explorationOptions = document.getElementById("explorationOptions");
+const modeSelect = document.getElementById("modeSelect");
+
+let shinyMode = false;
