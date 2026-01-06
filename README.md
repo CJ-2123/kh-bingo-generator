@@ -142,6 +142,7 @@ The .json file must be formatted as follows:
 ```
 
 The list must have a "name" property for each objective. "icon" is optional. Custom icons are not supported yet, but icons already on the website are useable in custom lists.
+[This folder](https://github.com/CJ-2123/kh-bingo-generator/tree/main/icons) contains all of the icons on the site. 
 
 ```json
 [
