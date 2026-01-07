@@ -37,12 +37,16 @@ This board supports multiple Kingdom Hearts games with a variety of board types 
 
 ## Goal Lists
 
-- Kingdom Hearts 1 AP Randomizer
-  - tags: Atlantica, 100 Acre Wood, Hades Cup, Superboss
-- Kingdom Hearts 2 Generic
-- Kingdom Hearts 2 Worlds
-- Kingdom Hearts 2 Visits
-- Kingdom Hearts 2 Boss Hunter
+- Kingdom Hearts 1
+  - AP Randomizer
+    - tags: Atlantica, 100 Acre Wood, Hades Cup, Superboss
+- Kingdom Hearts 2
+  - Generic
+  - Worlds
+  - Visits
+  - Boss Hunter
+
+Full bingo lists: https://cj-2123.github.io/docs/bingo.html
 
 ## Bingo Board Types
 
@@ -142,17 +146,17 @@ The .json file must be formatted as follows:
 ```
 
 The list must have a "name" property for each objective. "icon" is optional. Custom icons are not supported yet, but icons already on the website are useable in custom lists.
-[This folder](https://github.com/CJ-2123/kh-bingo-generator/tree/main/icons) contains all of the icons on the site. 
+[This folder](https://github.com/CJ-2123/kh-bingo-generator/tree/main/icons) contains all of the icons on the site.
 
 ```json
 [
   {
     "name": "Objective 1",
-    "icon": "icons/kh1-ap/Clayton.png"
+    "icon": "icons/kh1-ap/Clayton.webp"
   },
   {
     "name": "Objective 2",
-    "icon": "icons/kh2-bunter/ShanYu.png"
+    "icon": "icons/kh2-bunter/ShanYu.webp"
   }
   // more goals here
 ]
