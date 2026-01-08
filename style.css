@@ -155,6 +155,10 @@ button:hover {
   border-color: #63c6f5;
 }
 
+.custom-checkbox input:checked + .slider:hover {
+  border-color: white;
+}
+
 .custom-checkbox input:checked + .slider::before {
   transform: translateX(20px);
 }
@@ -403,6 +407,10 @@ margin-bottom: 12px;
 .mode-options {
   display: none;
   margin-top: 10px;
+}
+
+#traditionalOptions {
+  gap: 10px;
 }
 
 #info.collapsed {

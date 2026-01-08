@@ -25,7 +25,20 @@ const shinyCheckbox = document.getElementById("shinyCheckbox");
 const shinyInput = document.getElementById("shinyInput");
 const shinyCountInput = document.getElementById("shinyCount");
 
+const bingoLogicToggle = document.getElementById("bingoLogicToggle");
+
 let restoringFromURL = false;
+
+// Set UI on page load
+function setInitialUI() {
+  if (shinyCheckbox) {
+    shinyCheckbox.checked = shinyMode;
+  }
+
+  if (bingoLogicToggle) {
+    bingoLogicToggle.checked = bingoLogic;
+  }
+}
 
 // Set shiny mode options on shared game link
 function syncShinyUI(enabled, count = null) {
@@ -42,6 +55,11 @@ shinyCheckbox.addEventListener("change", () => {
 
   shinyMode = shinyCheckbox.checked;
   syncShinyUI(shinyMode);
+});
+
+// Bingo logic toggle
+bingoLogicToggle.addEventListener("change", (e) => {
+  bingoLogic = bingoLogicToggle.checked;
 });
 
 // Save marking color selection
@@ -367,6 +385,12 @@ function applySettingsFromURL() {
     }
   }
 
+  // bingo logic
+  if (params.has("bingoLogic")) {
+    bingoLogic = params.get("bingoLogic") === "1";
+    document.getElementById("bingoLogicToggle").checked = bingoLogic;
+  }
+
   // shiny mode
   if (params.has("sm")) {
     restoringFromURL = true;
@@ -480,3 +504,8 @@ function applyTagFiltering() {
 
   updateListPreview(allObjectives);
 }
+
+// Set UI on page load
+document.addEventListener("DOMContentLoaded", () => {
+  setInitialUI();
+});

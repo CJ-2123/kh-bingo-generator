@@ -125,6 +125,13 @@ function renderTraditionalBoard() {
 
 // Bingo checking
 function checkForBingo(isMarked) {
+  if (!bingoLogic) {
+    bingoLines = [];
+    updateBingoHighlights();
+    updateBingoScore();
+    return;
+  }
+
   const size = bingoSize;
   bingoLines = [];
 

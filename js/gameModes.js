@@ -9,15 +9,15 @@ function updateModeUI() {
   explorationOptions.style.display = "none";
 
   if (selectedMode === "rush") {
-    rushLimit.style.display = "block";
+    rushLimit.style.display = "inline-flex";
   }
 
   if (selectedMode === "traditional") {
-    traditionalOptions.style.display = "block";
+    traditionalOptions.style.display = "inline-flex";
   }
 
   if (selectedMode === "exploration") {
-    explorationOptions.style.display = "block";
+    explorationOptions.style.display = "inline-flex";
   }
 }
 

@@ -78,6 +78,7 @@ function buildShareURL() {
 
   if (selectedMode === "traditional") {
     params.set("bs", document.getElementById("boardSize").value);
+    params.set("bingoLogic", bingoLogic ? "1" : "0");
   }
 
   if (selectedMode === "exploration") {
