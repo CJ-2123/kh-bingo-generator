@@ -42,6 +42,7 @@ This board supports multiple Kingdom Hearts games with a variety of board types 
     - tags: Atlantica, 100 Acre Wood, Hades Cup, Superboss
 - Kingdom Hearts 2
   - Generic
+    - tags: Finite Goals
   - Worlds
   - Visits
   - Boss Hunter
