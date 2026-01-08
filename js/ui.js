@@ -132,6 +132,8 @@ gameSelect.addEventListener("change", () => {
 
   // custom game
   if (gameId === "custom") {
+    resetTagUI();
+
     fileInput.style.display = "block";
 
     listSelect.innerHTML = `<option value="" disabled selected hidden>Upload a JSON file</option>`;

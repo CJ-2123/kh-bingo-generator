@@ -11,29 +11,33 @@
 <h1>KH Bingo Generator</h1>
 
 <div id="controls">
-  <div class="control-row">
-    <select class="dropdown" id="gameSelect">
-      <option value="" disabled selected hidden>Select a game</option>
-    </select>
-    <select class="dropdown" id="listSelect" disabled>
-      <option value="" disabled selected hidden>Select a list</option>
-    </select>
+  <div class="control-row" id="gameOptions">
+    <div class="control-headers" id="gameOptionsHeader">Game Options</div>
+
+    <div>
+      <select class="dropdown" id="gameSelect">
+        <option value="" disabled selected hidden>Select a game</option>
+      </select>
+      <select class="dropdown" id="listSelect" disabled>
+        <option value="" disabled selected hidden>Select a list</option>
+      </select>
+    </div>
+
     <input type="file" id="jsonUpload" accept=".json">
+    
+    <div>
+      <div id="tagFilters" class="tag-filters"></div>
+    </div>
   </div>
 
-  <div class="control-row">
-    <div id="tagFilters" class="tag-filters"></div>
-  </div>
+  <div class="control-row" id="modeOptions">
+    <div class="control-headers" id="modeOptionsHeader">Mode Options</div>
 
-  <div class="control-row">
     <select class="dropdown" id="modeSelect">
       <option value="rush" selected>Rush</option>
       <option value="exploration">Fog of War</option>
       <option value="traditional">Bingo</option>
     </select>
-  </div>
-
-  <div class="control-row" id="modeOptions">
 
     <!-- Rush -->
      <div id="rushOptions">
@@ -92,22 +96,24 @@
     </div>
   </div>
 
-  <div class="control-row">
+  <div class="control-row" id="modifiers">
+    <div class="control-headers" id="modifiersHeader">Modifiers</div>
+    
     <label class="custom-checkbox">
       <span class="label-text">Shiny Goals:</span>
        <input type="checkbox" id="shinyCheckbox">
       <span class="slider"></span>
     </label>
-  </div>
 
-  <div class="control-row" id="shinyInput">
-    <label>
-      Shiny Count:
+    <div id="shinyInput">
+      <label>
+        Shiny Count:
         <input id="shinyCount" type="number" min="1" placeholder="Default">
-    </label>
+      </label>
+    </div>
   </div>
 
-  <div class="control-row">
+  <div class="control-row" id="output">
     <input id="seedInput" placeholder="Seed (optional)">
     <!-- <button id="copySeedButton">Copy Seed</button> -->
     <button id="copyShareLink" onclick="copyShareLink()">Copy Game Link</button>
@@ -115,7 +121,7 @@
   </div>
 </div>
 
-<div class="control-row">
+<div id="colorOptions">
   <label>
     Color:
     <select id="colorPicker" class="dropdown">

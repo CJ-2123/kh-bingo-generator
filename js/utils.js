@@ -168,3 +168,17 @@ function renderScore() {
     score.textContent = `Score: ${scoreState.rushRounds}`;
   }
 }
+
+function resetTagUI() {
+  const container = document.getElementById("tagFilters");
+
+  availableTags = [];
+  enabledTags = new Set();
+  rawObjectives = [];
+  urlDisabledTags = [];
+
+  if (container) {
+    container.innerHTML = "";
+    container.style.display = "none";
+  }
+}
