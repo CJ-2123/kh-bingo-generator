@@ -141,3 +141,29 @@ function pickShinyRounds(totalRounds, shinyCount, rng) {
 
   return result;
 }
+
+// Display current score depending on mode
+function renderScore() {
+  const score = document.getElementById("score");
+
+  if (selectedMode === "traditional") {
+    if (!bingoLogic) {
+      score.textContent = "";
+      return;
+    }
+
+    const count = scoreState.bingoLines;
+    score.textContent =
+      count === 0
+        ? "Score: 0 Lines"
+        : `Score: ${count} Line${count > 1 ? "s" : ""}`;
+  }
+
+  if (selectedMode === "exploration") {
+    score.textContent = `Score: ${scoreState.squaresCompleted}`;
+  }
+
+  if (selectedMode === "rush") {
+    score.textContent = `Score: ${scoreState.rushRounds}`;
+  }
+}

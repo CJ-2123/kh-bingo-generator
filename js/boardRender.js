@@ -170,11 +170,8 @@ function checkForBingo(isMarked) {
 
 // Count bingo lines
 function updateBingoScore() {
-  const count = bingoLines.length;
-  document.getElementById("score").textContent =
-    count === 0
-      ? "Score: 0 Lines"
-      : `Score: ${count} Line${count > 1 ? "s" : ""}`;
+  scoreState.bingoLines = bingoLines.length;
+  renderScore();
 }
 
 // Change bingo line color
@@ -387,7 +384,8 @@ function updateFogScore() {
       if (squareStates[id] === 2) count++;
     }
   }
-  document.getElementById("score").textContent = `Score: ${count}`;
+  scoreState.squaresCompleted = count;
+  renderScore();
 }
 
 // Reveal hidden squares
@@ -517,9 +515,9 @@ function completeRound(chosenObjective, element) {
 
   element.classList.add("completed");
 
-  document.getElementById("score").textContent = `Score: ${
-    completedObjectives.length + 1
-  }`;
+  // update score
+  scoreState.rushRounds = completedObjectives.length + 1;
+  renderScore();
 
   // log chosen square
   const roundDiv = document.createElement("div");

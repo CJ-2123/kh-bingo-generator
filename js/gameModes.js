@@ -74,21 +74,18 @@ function updateModeUIVisibility() {
     progress.style.display = "block";
     log.style.display = "block";
     score.style.display = "block";
-    score.textContent = "Score: 0";
   }
 
   if (selectedMode === "traditional") {
     progress.style.display = "none";
     log.style.display = "none";
     score.style.display = "block";
-    score.textContent = "Score: 0 Lines";
   }
 
   if (selectedMode === "exploration") {
     progress.style.display = "none";
     log.style.display = "none";
     score.style.display = "block";
-    score.textContent = "Score: 0";
   }
 }
 

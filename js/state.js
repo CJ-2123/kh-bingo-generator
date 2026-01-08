@@ -23,4 +23,12 @@ const traditionalOptions = document.getElementById("traditionalOptions");
 const explorationOptions = document.getElementById("explorationOptions");
 const modeSelect = document.getElementById("modeSelect");
 
+let scoreState = {
+  bingoLines: 0,
+  squaresCompleted: 0,
+  rushRounds: 0,
+};
+
 let shinyMode = false;
+
+let bingoLogic = true;
