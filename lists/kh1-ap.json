@@ -322,7 +322,8 @@
   },
   {
     "name": "Crystal Trident",
-    "icon": "icons/kh1-ap/CrystalTrident.webp"
+    "icon": "icons/kh1-ap/CrystalTrident.webp",
+    "tags": ["Atlantica"]
   },
   {
     "name": "Forget-Me-Not",
