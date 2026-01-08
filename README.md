@@ -53,7 +53,7 @@ Full bingo lists: https://cj-2123.github.io/docs/bingo.html
 
 ### Rush
 
-![Rush Mode](icons/info/bingo-3.png)
+![Rush Mode](icons/info/rush-1.png)
 
 Complete 1 of 3 goals given to you. After completing a goal, 3 more goals appear.
 
@@ -65,7 +65,11 @@ Complete 1 of 3 goals given to you. After completing a goal, 3 more goals appear
 
 Based on Rush Bingo Mode by DotoPotato: [Lockout.Live](https://beta.lockout.live/)
 
+![Rush Mode](icons/info/bingo-3.png)
+
 ### Fog of War
+
+![Fog of War Mode](icons/info/fog-1.png)
 
 Select squares are revealed initially while the rest of the board is hidden. Complete a goal to reveal the squares to the top, bottom, left, and right.
 
@@ -84,10 +88,13 @@ Select squares are revealed initially while the rest of the board is hidden. Com
 
 ### Bingo
 
+![Classic Bingo Mode](icons/info/classic-1.png)
+
 Classic Bingo Mode. Given a board, complete a line to get a bingo.
 
-- Squares change color when they are part of a bingo line.
-- Score keeps track of how many bingo lines you've completed.
+- Bingo Logic enables Bingo Line Logic
+  - Squares change color when they are part of a bingo line.
+  - Score keeps track of how many bingo lines you've completed.
 
 ![Classic Bingo Mode](icons/info/bingo-5.png)
 
@@ -95,7 +102,12 @@ Classic Bingo Mode. Given a board, complete a line to get a bingo.
 
 **Shiny Goals**
 
-- If enabled, will set random squares to "Shiny". You can set how many show up in the Shiny Count text box. If left blank, a default number of shiny goals will appear.
+![Shiny Mode](icons/info/shiny-1.png)
+
+- If enabled, will set random squares to "Shiny", putting a special border around goals.
+- Shiny Count sets how many shiny goals show up. If left blank, a default number of shiny goals will appear.
+  - Rush Mode Default = Math.floor(number of rounds / 4)
+  - Fog of War and Classic Bingo Default = board size - 2
 - Based on Shiny Goals by DotoPotato: [Lockout.Live](https://beta.lockout.live/)
 
 ![Fog of War, Classic-4, Shiny Goals](icons/info/bingo-6.png)
