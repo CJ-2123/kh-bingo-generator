@@ -1,11 +1,12 @@
 let allObjectives = [];
-let remainingObjectives = [];
-let currentRound = [];
-let completedObjectives = [];
 let gameGenerated = false;
 let gameStarted = false;
 let rng = Math.random;
 let seedValue = null;
+
+let remainingObjectives = [];
+let currentRound = [];
+let completedObjectives = [];
 
 let bingoBoard = [];
 let bingoMarks = [];
@@ -30,5 +31,4 @@ let scoreState = {
 };
 
 let shinyMode = false;
-
 let bingoLogic = true;

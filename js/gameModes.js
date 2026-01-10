@@ -225,6 +225,7 @@ function startGame() {
   document.getElementById("listPreview").style.display = "none";
   document.getElementById("controls").classList.add("hidden");
   document.getElementsByTagName("h1")[0].classList.add("hidden");
+  document.getElementById("copyShareLink2").classList.remove("hidden");
 
   board.style.display = "grid";
   updateModeUIVisibility();
