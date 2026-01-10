@@ -12,7 +12,7 @@ function updateModeUI() {
     rushLimit.style.display = "inline-flex";
   }
 
-  if (selectedMode === "traditional") {
+  if (selectedMode === "classic") {
     traditionalOptions.style.display = "inline-flex";
   }
 
@@ -43,10 +43,10 @@ function validateGameSetup() {
     }
   }
 
-  if (selectedMode === "traditional") {
+  if (selectedMode === "classic") {
     const size = Number(document.getElementById("boardSize").value);
     if (allObjectives.length < size * size) {
-      return `Traditional ${size}×${size} requires at least ${
+      return `classic ${size}×${size} requires at least ${
         size * size
       } objectives.`;
     }
@@ -76,7 +76,7 @@ function updateModeUIVisibility() {
     score.style.display = "block";
   }
 
-  if (selectedMode === "traditional") {
+  if (selectedMode === "classic") {
     progress.style.display = "none";
     log.style.display = "none";
     score.style.display = "block";
@@ -132,7 +132,7 @@ function generateGame() {
   rng = seededRNG(seed);
 
   // shiny mode support. set them before board render and tie to seed.
-  if (selectedMode === "traditional") {
+  if (selectedMode === "classic") {
     bingoSize = Number(document.getElementById("boardSize").value);
     const total = bingoSize * bingoSize;
     const shinyInput = document.getElementById("shinyCount")?.value ?? "";
@@ -236,7 +236,7 @@ function startGame() {
     renderRushBoard();
   }
 
-  if (selectedMode === "traditional") {
+  if (selectedMode === "classic") {
     startTraditionalBingo();
   }
 

@@ -76,7 +76,7 @@ function buildShareURL() {
     if (limit) params.set("rl", limit);
   }
 
-  if (selectedMode === "traditional") {
+  if (selectedMode === "classic") {
     params.set("bs", document.getElementById("boardSize").value);
     params.set("bingoLogic", bingoLogic ? "1" : "0");
   }
@@ -147,7 +147,7 @@ function pickShinyRounds(totalRounds, shinyCount, rng) {
 function renderScore() {
   const score = document.getElementById("score");
 
-  if (selectedMode === "traditional") {
+  if (selectedMode === "classic") {
     if (!bingoLogic) {
       score.textContent = "";
       return;

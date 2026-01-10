@@ -374,7 +374,7 @@ function applySettingsFromURL() {
     document.getElementById("rushRoundLimit").value = params.get("rl");
   }
 
-  if (mode === "traditional" && params.has("bs")) {
+  if (mode === "classic" && params.has("bs")) {
     document.getElementById("boardSize").value = params.get("bs");
   }
 
