@@ -388,8 +388,8 @@ function applySettingsFromURL() {
   }
 
   // bingo logic
-  if (params.has("bingoLogic")) {
-    bingoLogic = params.get("bingoLogic") === "1";
+  if (params.has("bl")) {
+    bingoLogic = params.get("bl") === "1";
     document.getElementById("bingoLogicToggle").checked = bingoLogic;
   }
 
