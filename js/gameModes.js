@@ -108,7 +108,7 @@ function updateModeUIVisibility() {
 // }
 // document.getElementById("copySeedButton").addEventListener("click", copySeed);
 
-// Setup game. Display seed.
+// Setup game. Display board.
 function generateGame() {
   const error = validateGameSetup();
   if (error) {
@@ -183,40 +183,7 @@ function generateGame() {
   completedObjectives = [];
   completedList.innerHTML = "";
 
-  // set UI elements
-  document.getElementById("listPreview").style.display = "none";
-  document.getElementById("infoContainer").style.display = "none";
-
-  seedInput.readOnly = true;
-  fileInput.disabled = true;
-  gameSelect.disabled = true;
-  listSelect.disabled = true;
-  modeSelect.disabled = true;
-  traditionalOptions.disabled = true;
-  explorationOptions.disabled = true;
-  document.getElementById("rushRoundLimit").readOnly = true;
-  document.getElementById("boardSize").disabled = true;
-  document.getElementById("exploreSize").disabled = true;
-  document.getElementById("exploreStart").disabled = true;
-  // document.getElementById("shinyCheckbox").disabled = true;
-  document.getElementById("shinyCount").disabled = true;
-  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-  checkboxes.forEach((checkbox) => {
-    checkbox.disabled = true;
-  });
-
-  // document.getElementById("copySeedButton").style.display = "inline-block";
-  document.getElementById("copyShareLink").style.display = "inline-block";
-
-  gameGenerated = true;
-  mainButton.textContent = "Start Game";
-
   status.textContent = `Seed: "${seed}"`;
-}
-
-// Start the game. Display the board based on game mode.
-function startGame() {
-  if (gameStarted) return;
 
   gameStarted = true;
 

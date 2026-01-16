@@ -282,12 +282,10 @@ modeSelect.addEventListener("change", () => {
   updateModeUI();
 });
 
-// Generate Game Button turns into Start Game Button
+// Generate Game Button
 mainButton.addEventListener("click", () => {
   if (!gameGenerated) {
     generateGame();
-  } else if (!gameStarted) {
-    startGame();
   }
 });
 
