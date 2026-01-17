@@ -119,11 +119,12 @@ document.addEventListener("DOMContentLoaded", () => {
 function returnToOptions() {
   // remove in-game UI
   board.style.display = "none";
+  document.getElementById("boardOverlay").classList.add("hidden");
   document.getElementById("copyShareLink2").classList.add("hidden");
   document.getElementById("copyPresetLink2").classList.add("hidden");
   document.getElementById("score").classList.add("hidden");
-  document.getElementById("progressContainer").classList.add("hidden");
-  document.getElementById("log").classList.add("hidden");
+  document.getElementById("progressContainer").style.display = "none";
+  document.getElementById("log").style.display = "none";
   document.getElementById("backToOptions").classList.add("hidden");
   status.textContent = ``;
 
