@@ -17,10 +17,12 @@ Bingo generator for various Kingdom Hearts games.
    2. "List Preview" will appear when a list is selected, showing how many objectives are in the list and whether or not it has icons
 2. Select a bingo mode and set applicable options
 3. (Optional) Enter a seed
-4. Click "Generate Game"
+4. Click "Generate Game" to generate a game board.
 5. A random seed will be generated if you didn't enter a seed, otherwise the seed you entered will be displayed as the current seed.
-   1. "Copy Game Link" will save the game, settings, and seed to your clipboard to share with others.
-6. Click "Start Game" to display the board
+   1. "Copy Game Link" will save the link to the board to your clipboard to save or share with others.
+   2. (The address bar in your browser is the same link as "Copy Game Link".)
+   3. "Copy Preset Link" will save the game, settings, and seed (if generated) to your clipboard to save or share with others.
+6. The board is initially hidden. Click to reveal it.
 
 **Controls:**
 
@@ -28,6 +30,11 @@ Bingo generator for various Kingdom Hearts games.
 - Scroll wheel up and down cycles through default, marked, and complete
 - (Rush Mode Only) Hotkeys: 1, 2, 3
 - Color dropdown selects your marking color. It will automatically update if changed mid-game.
+
+**Other**
+
+- The "Reset" button in the top left corner of the generator page will reset the page to default.
+- The "Back" button in the top left corner of the game board page will send you back to the generator page.
 
 For using your own list, see the "Custom Bingo Lists" section.
 
