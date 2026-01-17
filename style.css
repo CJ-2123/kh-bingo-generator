@@ -264,6 +264,7 @@ button:hover {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  outline: 10px solid black;
 }
 
 .board-overlay.hidden {
