@@ -8,6 +8,14 @@
   src: local('ComicHearts'), url('fonts/ComicHearts.otf') format('truetype');
 }
 
+body.preload #controls,
+body.preload #infoContainer, 
+body.preload #status, 
+body.preload #listPreview,
+body.preload h1 {
+  display: none;
+}
+
 body, button, input, select, textarea {
   font-family: 'KHMenu';
 }
@@ -100,6 +108,24 @@ input {
   margin-right: 8px;
   background: black;
   color: white;
+}
+
+.game-ui {
+  background: #001e3c;
+  box-shadow: none;
+  margin: 0;
+  padding: 5px;
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 12px;
+}
+
+.game-ui > img, 
+.game-ui > span {
+  vertical-align: middle;
 }
 
 button {

@@ -29,7 +29,28 @@ const bingoLogicToggle = document.getElementById("bingoLogicToggle");
 
 let restoringFromURL = false;
 
-// Set UI on page load
+// Load generator view or game view
+async function handleInitialLoad() {
+  const params = new URLSearchParams(window.location.search);
+  const isGameView = params.get("view") === "game";
+
+  restoringFromURL = true;
+  applySettingsFromURL();
+  restoringFromURL = false;
+
+  if (isGameView) {
+    const success = await loadObjectives();
+    if (success) {
+      generateGame();
+    }
+  }
+
+  document.body.classList.remove("preload");
+}
+
+window.addEventListener("DOMContentLoaded", handleInitialLoad);
+
+// Set UI options on page load for saved links
 function setInitialUI() {
   if (shinyCheckbox) {
     shinyCheckbox.checked = shinyMode;
@@ -38,6 +59,12 @@ function setInitialUI() {
   if (bingoLogicToggle) {
     bingoLogicToggle.checked = bingoLogic;
   }
+}
+
+// Reset all game options
+function resetUI() {
+  // localStorage.clear();
+  window.location.href = window.location.pathname;
 }
 
 // Set shiny mode options on shared game link
@@ -78,30 +105,35 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// // Generate shareable link from current settings
-// function getShareableLink() {
-//   const params = new URLSearchParams();
-//   params.set("mode", bingoSettings.mode);
-//   params.set("boardSize", bingoSettings.boardSize);
-//   params.set("color", bingoSettings.color);
-//   if (bingoSettings.disabledTags.length)
-//     params.set("disabledTags", bingoSettings.disabledTags.join(","));
+// Back button from board to generator
+function returnToOptions() {
+  // remove in-game UI
+  board.style.display = "none";
+  document.getElementById("copyShareLink2").classList.add("hidden");
+  document.getElementById("copyPresetLink2").classList.add("hidden");
+  document.getElementById("score").classList.add("hidden");
+  document.getElementById("progressContainer").classList.add("hidden");
+  document.getElementById("log").classList.add("hidden");
+  document.getElementById("backToOptions").classList.add("hidden");
+  status.textContent = ``;
 
-//   return `${window.location.origin}${
-//     window.location.pathname
-//   }?${params.toString()}`;
-// }
+  // show generator UI
+  document.getElementById("controls").classList.remove("hidden");
+  document.getElementsByTagName("h1")[0].classList.remove("hidden");
+  document.getElementById("infoContainer").style.display = "";
+  document.getElementById("listPreview").style.display = "";
 
-// // Load settings from URL
-// function loadFromURL() {
-//   const params = new URLSearchParams(window.location.search);
-//   if (params.has("mode")) bingoSettings.mode = params.get("mode");
-//   if (params.has("boardSize"))
-//     bingoSettings.boardSize = Number(params.get("boardSize"));
-//   if (params.has("color")) bingoSettings.color = params.get("color");
-//   if (params.has("disabledTags"))
-//     bingoSettings.disabledTags = params.get("disabledTags").split(",");
-// }
+  gameStarted = false;
+  gameGenerated = false;
+
+  // replace with preset url
+  const presetURL = buildShareURL(false);
+  history.pushState({ view: "options" }, "", presetURL);
+}
+
+document
+  .getElementById("backToOptions")
+  .addEventListener("click", returnToOptions);
 
 // Load lists from gamesLists.js
 function populateGames() {
@@ -243,9 +275,11 @@ async function loadObjectives() {
     applyTagFiltering();
 
     status.textContent = `Loaded list: ${listFile}. Ready to generate game.`;
+    return true;
   } catch (err) {
     console.error(err);
     status.textContent = "Error loading objective list";
+    return false;
   }
 }
 

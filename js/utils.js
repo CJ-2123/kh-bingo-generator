@@ -57,8 +57,12 @@ function validateObjectiveList(data) {
 }
 
 // Shareable link with settings and seed
-function buildShareURL() {
+function buildShareURL(isGameLink = false) {
   const params = new URLSearchParams();
+
+  if (isGameLink) {
+    params.set("view", "game");
+  }
 
   params.set("g", gameSelect.value);
   params.set("l", listSelect.value);
@@ -92,11 +96,18 @@ function buildShareURL() {
   return `${location.origin}${location.pathname}?${params.toString()}`;
 }
 
-// Share link button
+// Share preset link button
 function copyShareLink() {
   const url = buildShareURL();
   navigator.clipboard.writeText(url);
   alert("Share link copied!");
+}
+
+// Share game/board link button
+function copyGameLink() {
+  const url = window.location.href;
+  navigator.clipboard.writeText(url);
+  alert("Game link copied!");
 }
 
 // User input shiny count or default

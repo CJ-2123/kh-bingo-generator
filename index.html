@@ -6,11 +6,16 @@
 <link href="style.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="preload">
 
 <h1>KH Bingo Generator</h1>
 
 <div id="controls">
+  <button id="refresh" class="game-ui" onclick="resetUI()">
+    <img src="icons/info/refresh.png" alt="Reset Generator" style="width: 20px; height: 20px;">
+    <span>Reset</span>
+  </button>
+
   <div class="control-row" id="gameOptions">
     <div class="control-headers" id="gameOptionsHeader">Game Options</div>
 
@@ -115,15 +120,24 @@
 
   <div class="control-row" id="output">
     <input id="seedInput" placeholder="Seed (optional)">
-    <!-- <button id="copySeedButton">Copy Seed</button> -->
-    <button id="copyShareLink" onclick="copyShareLink()">Copy Game Link</button>
+    <button id="copyPresetLink" onclick="copyShareLink()">Copy Preset Link</button>
     <button id="mainButton">Generate Game</button>
   </div>
+
 </div>
 
-<button id="copyShareLink2" onclick="copyShareLink()" class="hidden">Copy Game Link</button>
-
 <div class="control-row" id="inGameOptions">
+
+  <button id="backToOptions" class="hidden game-ui">
+    <img src="icons/info/left.png" alt="Back to Options" style="width: 20px; height: 20px;">
+    <span>Back</span>
+  </button>
+
+  <div id="shareButtons">
+    <button id="copyPresetLink2" onclick="copyShareLink()" class="hidden">Copy Preset Link</button>
+    <button id="copyShareLink2" onclick="copyGameLink()" class="hidden">Copy Board Link</button>
+  </div>
+
   <div id="colorOptions">
     <label>
       Color:
@@ -137,6 +151,7 @@
       </select>
     </label>
   </div>
+  
 </div>
 
 <div id="game-summary" class="hidden"></div>

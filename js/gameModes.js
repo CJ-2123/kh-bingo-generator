@@ -89,25 +89,6 @@ function updateModeUIVisibility() {
   }
 }
 
-// // Sharing seeds
-// function copySeed() {
-//   const seed = seedInput.value.trim();
-//   if (!seed) {
-//     alert("No seed to copy!");
-//     return;
-//   }
-
-//   navigator.clipboard
-//     .writeText(seed)
-//     .then(() => {
-//       alert(`Seed "${seed}" copied to clipboard!`);
-//     })
-//     .catch(() => {
-//       alert("Failed to copy seed. Try manually.");
-//     });
-// }
-// document.getElementById("copySeedButton").addEventListener("click", copySeed);
-
 // Setup game. Display board.
 function generateGame() {
   const error = validateGameSetup();
@@ -192,7 +173,11 @@ function generateGame() {
   document.getElementById("listPreview").style.display = "none";
   document.getElementById("controls").classList.add("hidden");
   document.getElementsByTagName("h1")[0].classList.add("hidden");
+
+  // display in-game options
   document.getElementById("copyShareLink2").classList.remove("hidden");
+  document.getElementById("copyPresetLink2").classList.remove("hidden");
+  document.getElementById("backToOptions").classList.remove("hidden");
 
   board.style.display = "grid";
   updateModeUIVisibility();
@@ -210,4 +195,7 @@ function generateGame() {
   if (selectedMode === "exploration") {
     startExplorationBingo();
   }
+
+  const gameURL = buildShareURL(true);
+  history.pushState({ view: "game" }, "", gameURL);
 }
