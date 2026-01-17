@@ -198,4 +198,8 @@ function generateGame() {
 
   const gameURL = buildShareURL(true);
   history.pushState({ view: "game" }, "", gameURL);
+
+  if (shouldHideBoard()) {
+    hideBoard();
+  }
 }

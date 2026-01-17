@@ -46,9 +46,19 @@ async function handleInitialLoad() {
   }
 
   document.body.classList.remove("preload");
+
+  if (shouldHideBoard()) {
+    hideBoard();
+  }
 }
 
 window.addEventListener("DOMContentLoaded", handleInitialLoad);
+
+// Hide board
+function shouldHideBoard() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("view") === "game";
+}
 
 // Set UI options on page load for saved links
 function setInitialUI() {
@@ -322,6 +332,19 @@ mainButton.addEventListener("click", () => {
     generateGame();
   }
 });
+
+// Board hiding
+const boardOverlay = document.getElementById("boardOverlay");
+
+function hideBoard() {
+  boardOverlay.classList.remove("hidden");
+}
+
+function revealBoard() {
+  boardOverlay.classList.add("hidden");
+}
+
+boardOverlay.addEventListener("click", revealBoard);
 
 // Rush Mode Hotkeys
 document.addEventListener("keydown", (e) => {
