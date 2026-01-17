@@ -77,6 +77,9 @@ function resetUI() {
   window.location.href = window.location.pathname;
 }
 
+// Back button on board view
+document.getElementById("backToOptions").addEventListener("click", resetUI);
+
 // Set shiny mode options on shared game link
 function syncShinyUI(enabled, count = null) {
   shinyCheckbox.checked = enabled;
@@ -114,37 +117,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
-
-// Back button from board to generator
-function returnToOptions() {
-  // remove in-game UI
-  board.style.display = "none";
-  document.getElementById("boardOverlay").classList.add("hidden");
-  document.getElementById("copyShareLink2").classList.add("hidden");
-  document.getElementById("copyPresetLink2").classList.add("hidden");
-  document.getElementById("score").classList.add("hidden");
-  document.getElementById("progressContainer").style.display = "none";
-  document.getElementById("log").style.display = "none";
-  document.getElementById("backToOptions").classList.add("hidden");
-  status.textContent = ``;
-
-  // show generator UI
-  document.getElementById("controls").classList.remove("hidden");
-  document.getElementsByTagName("h1")[0].classList.remove("hidden");
-  document.getElementById("infoContainer").style.display = "";
-  document.getElementById("listPreview").style.display = "";
-
-  gameStarted = false;
-  gameGenerated = false;
-
-  // replace with preset url
-  const presetURL = buildShareURL(false);
-  history.pushState({ view: "options" }, "", presetURL);
-}
-
-document
-  .getElementById("backToOptions")
-  .addEventListener("click", returnToOptions);
 
 // Load lists from gamesLists.js
 function populateGames() {
